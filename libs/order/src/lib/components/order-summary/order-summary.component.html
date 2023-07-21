@@ -1,0 +1,22 @@
+<div class="order-summary" *ngIf="totalPrice">
+    <h3>Order Summary </h3>
+    <div class="summary-price">
+        <span>Item Price</span>
+        <span>{{totalPrice | currency :'INR'}}</span>
+    </div>
+    <div class="summary-price">
+        <span>Packing & Shipping</span>
+        <span class="free">free</span>
+    </div>
+
+    <div class="to-checkout">
+        <div class="summary-price">
+            <span>Item Price</span>
+            <span>{{totalPrice | currency :'INR'}}</span>
+        </div>
+        <div class="checkout-button" *ngIf="!isCheckoutPage">
+            <p-button routerLink="/checkout" label="checkout"></p-button>
+        </div>
+    </div>
+
+</div>  

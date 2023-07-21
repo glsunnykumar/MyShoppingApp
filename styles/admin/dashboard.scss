@@ -1,0 +1,44 @@
+.d-item{
+    display: flex;
+    text-align: center;
+    color :var(--surface-0);
+    justify-content: space-between;
+
+    .pi{
+        font-size: 4em;
+        margin-bottom: 15px;
+    }
+    .name{
+        font-size: 1.4em;
+    }
+
+    .number {
+        margin-top: 50px;
+        font-size: 2em;
+        float: right;
+    }
+  
+}
+
+.d-orders{
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+
+}
+
+.d-users{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,121,9,0.31976540616246496) 35%, rgba(0,212,255,1) 100%);
+
+}
+
+.d-products{
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 35%, rgba(170,173,176,1) 100%);
+
+}
+
+.d-totalSale{
+    background: rgb(230,101,9);
+    background: radial-gradient(circle, rgba(230,101,9,0.08727240896358546) 23%, rgba(170,173,176,1) 100%);
+}

@@ -17,7 +17,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "riti",
+            "prefix": "myshop",
             "style": "kebab-case"
           }
         ]
