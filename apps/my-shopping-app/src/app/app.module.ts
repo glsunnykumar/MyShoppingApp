@@ -17,6 +17,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { NgxStripeModule } from 'ngx-stripe';
 
+import { ENVIRONMENT } from '@riti/environment';
+import { environment } from '../environments/environment';
+
 @NgModule({
     declarations: [AppComponent, NxWelcomeComponent, HomePageComponent, HeaderComponent, FooterComponent, NavComponent],
     imports: [BrowserModule, 
@@ -31,7 +34,10 @@ import { NgxStripeModule } from 'ngx-stripe';
     UsersModule
 ],
 
-    providers: [{provide: HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
+    providers: [
+        {provide: HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true},
+        { provide: ENVIRONMENT, useValue: environment }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

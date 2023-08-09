@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Product } from '../../models/product';
 
 
-import {environment}  from  '@env/environment';
+import { Environment, ENVIRONMENT } from '@riti/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductsService {
 
-    apiURLProducts = environment.apiURL+'products';
-    constructor(private httpclient: HttpClient) {
+    apiURLProducts:string ; // = environment.apiURL+'products';
+    constructor(private httpclient: HttpClient,
+        @Inject(ENVIRONMENT) private env: Environment
+        ) {
+            this.apiURLProducts = env.apiURL +'products';
     }
 
     addProduct(product: FormData): Observable<Product> {

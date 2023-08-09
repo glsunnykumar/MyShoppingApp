@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from '@env/environment';
+import { Inject, Injectable } from '@angular/core';
+import { Environment, ENVIRONMENT } from '@riti/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +8,18 @@ import { environment } from '@env/environment';
 
 
 export class DashbordStaticsService {
-  apiURLUsers = environment.apiURL +'users';
-  apiURLProducts = environment.apiURL +'products';
-  apiURLOrders = environment.apiURL +'orders';
+  apiURLUsers: string; // = environment.apiURL +'users';
+  apiURLProducts:string; //= environment.apiURL +'products';
+  apiURLOrders:string; //= environment.apiURL +'orders';
 
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,
+    @Inject(ENVIRONMENT) private env: Environment
+    ) {
+      this.apiURLUsers = this.env.apiURL + 'users';
+      this.apiURLProducts = this.env.apiURL + 'products';
+      this.apiURLOrders = this.env.apiURL +'orders';
+     }
 
   getOrders(){
    return this.http.get(`${this.apiURLOrders}`);

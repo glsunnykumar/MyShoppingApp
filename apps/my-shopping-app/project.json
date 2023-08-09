@@ -8,18 +8,24 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/my-shopping-app",
         "index": "apps/my-shopping-app/src/index.html",
         "main": "apps/my-shopping-app/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/my-shopping-app/tsconfig.app.json",
         "assets": [
           "apps/my-shopping-app/src/favicon.ico",
           "apps/my-shopping-app/src/assets"
         ],
-        "styles": ["apps/my-shopping-app/src/styles.scss"],
+        "styles": [
+          "apps/my-shopping-app/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -44,7 +50,13 @@
           "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
-          "namedChunks": true
+          "namedChunks": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/my-shopping-app/src/environments/environment.ts",
+              "with": "apps/my-shopping-app/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -69,7 +81,9 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
         "lintFilePatterns": [
           "apps/my-shopping-app/**/*.ts",
@@ -79,7 +93,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/my-shopping-app/jest.config.ts",
         "passWithNoTests": true

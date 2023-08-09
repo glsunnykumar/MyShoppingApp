@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { User } from '../models/user';
@@ -7,17 +7,21 @@ import * as countriesLib from 'i18n-iso-countries';
 
 declare const require: (arg0: string) => { locale: string; countries: { [alpha2Key: string]: string | string[]; }; };
 
-
-import {environment}  from  '@env/environment';
+import { Environment, ENVIRONMENT } from '@riti/environment';
 import { UsersFacade } from '../state/users.facade';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
 
-    apiURLUsers = environment.apiURL +'users';
-    constructor(private httpclient: HttpClient ,private userFacade :UsersFacade) {
+    apiURLUsers : string; //= environment.apiURL +'users';
+    constructor(private httpclient: HttpClient ,
+      private userFacade :UsersFacade,
+      @Inject(ENVIRONMENT) private env: Environment
+      ) {
+        this.apiURLUsers = this.env.apiURL +'users';
         this.getUsers().subscribe();
     }
 
