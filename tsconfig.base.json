@@ -15,11 +15,11 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@env/*": ["environments/*"],
             "@riti/order": ["libs/order/src/index.ts"],
             "@riti/products": ["libs/products/src/index.ts"],
             "@riti/ui": ["libs/ui/src/index.ts"],
-            "@riti/users": ["libs/users/src/index.ts"]
+            "@riti/users": ["libs/users/src/index.ts"],
+            "@env/*": ["environments/*"],
         }
     },
     "exclude": ["node_modules", "tmp"]
