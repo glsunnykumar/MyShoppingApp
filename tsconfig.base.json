@@ -15,6 +15,7 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+          
             "@riti/order": ["libs/order/src/index.ts"],
             "@riti/products": ["libs/products/src/index.ts"],
             "@riti/ui": ["libs/ui/src/index.ts"],

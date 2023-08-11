@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map,switchMap } from 'rxjs/operators';
 import { Order } from '../models/order';
-import { environment } from '@env/environment';
+import { Environment, ENVIRONMENT } from '@riti/environment';
 import { OrderItem } from '../models/order-item';
 import { StripeService } from 'ngx-stripe';
 
@@ -12,10 +12,19 @@ import { StripeService } from 'ngx-stripe';
   providedIn: 'root'
 })
 export class OrdersService {
-  apiURLOrders = environment.apiURL + 'orders';
-  apiURLProducts = environment.apiURL + 'products';
+  // apiURLOrders = environment.apiURL + 'orders';
+  // apiURLProducts = environment.apiURL + 'products';
+  apiURLOrders: string;
+  apiURLProducts :string;
 
-  constructor(private http: HttpClient, private stripeService :StripeService) {}
+  constructor(
+    private http: HttpClient, 
+    private stripeService :StripeService,
+    @Inject(ENVIRONMENT) private env: Environment
+    ) {
+      this.apiURLOrders = this.env.apiURL +'orders';
+      this.apiURLProducts = this.env.apiURL +'products';
+    }
 
   getOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(this.apiURLOrders);

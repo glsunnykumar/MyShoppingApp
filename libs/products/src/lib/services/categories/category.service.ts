@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../../models/category';
+
+
 import {environment}  from  '@env/environment';
 
 @Injectable({
@@ -9,8 +11,13 @@ import {environment}  from  '@env/environment';
 })
 export class CategoryService {
 
-    apiURLCategories = environment.apiURL +'categories';
-    constructor(private httpclient: HttpClient) {
+   // apiURLCategories = environment.apiURL +'categories';
+   apiURLCategories:string;
+    constructor(
+        private httpclient: HttpClient,
+        @Inject(ENVIRONMENT) private env: Environment
+        ) {
+        this.apiURLCategories = env.apiURL +'categories';
         this.getCategories().subscribe();
     }
 
